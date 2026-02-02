@@ -39,7 +39,9 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div
-          ref={(el) => (animatedRefs.current[0] = el!)}
+          ref={(el) => {
+  animatedRefs.current[0] = el;
+}}
           className="scroll-anim text-center mb-16"
         >
           <span className="text-[var(--accent)] font-medium text-sm uppercase tracking-wider">

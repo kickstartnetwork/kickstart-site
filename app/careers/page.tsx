@@ -37,7 +37,9 @@ export default function Careers() {
       <section className="pt-32 pb-20 px-6">
         {/* Header */}
         <div
-          ref={(el) => (animatedRefs.current[0] = el!)}
+          ref={(el) => {
+  animatedRefs.current[0] = el;
+}}
           className="scroll-anim max-w-4xl mx-auto text-center mb-20"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-6">
