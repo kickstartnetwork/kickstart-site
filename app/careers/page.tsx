@@ -6,22 +6,27 @@ import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 
 export default function Careers() {
-  const animatedRefs = useRef<HTMLDivElement[]>([]);
+  const animatedRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   /* ---------------- Scroll In / Out Animation ---------------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.isIntersecting
-            ? entry.target.classList.add("in-view")
-            : entry.target.classList.remove("in-view");
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          } else {
+            entry.target.classList.remove("in-view");
+          }
         });
       },
       { threshold: 0.2 }
     );
 
-    animatedRefs.current.forEach((el) => el && observer.observe(el));
+    animatedRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
     return () => observer.disconnect();
   }, []);
 
@@ -30,6 +35,12 @@ export default function Careers() {
       role
     )}`;
 
+  const setRef =
+    (index: number) =>
+    (el: HTMLDivElement | null): void => {
+      animatedRefs.current[index] = el;
+    };
+
   return (
     <main className="min-h-screen ease-in-out">
       <Navigation />
@@ -37,9 +48,7 @@ export default function Careers() {
       <section className="pt-32 pb-20 px-6">
         {/* Header */}
         <div
-          ref={(el) => {
-  animatedRefs.current[0] = el;
-}}
+          ref={setRef(0)}
           className="scroll-anim max-w-4xl mx-auto text-center mb-20"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-6">
@@ -56,8 +65,8 @@ export default function Careers() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {/* Intern */}
           <div
-            ref={(el) => (animatedRefs.current[1] = el!)}
-            className="scroll-anim relative bg-[var(--card-bg)] p-8 rounded-xl border border-[var(--border)] hover:border-[var(--accent)] transition-all flex flex-col"
+            ref={setRef(1)}
+            className="scroll-anim bg-[var(--card-bg)] p-8 rounded-xl border border-[var(--border)] hover:border-[var(--accent)] transition-all flex flex-col"
           >
             <h3 className="text-2xl font-semibold text-[var(--foreground)] mb-4">
               Intern (ECE / CSE)
@@ -85,8 +94,8 @@ export default function Careers() {
 
           {/* Freelancer */}
           <div
-            ref={(el) => (animatedRefs.current[2] = el!)}
-            className="scroll-anim relative bg-[var(--card-bg)] p-8 rounded-xl border border-[var(--border)] hover:border-[var(--accent)] transition-all flex flex-col"
+            ref={setRef(2)}
+            className="scroll-anim bg-[var(--card-bg)] p-8 rounded-xl border border-[var(--border)] hover:border-[var(--accent)] transition-all flex flex-col"
           >
             <h3 className="text-2xl font-semibold text-[var(--foreground)] mb-4">
               Technical Freelancer (ECE / CSE)
@@ -114,10 +123,10 @@ export default function Careers() {
 
           {/* Social Media & Visual Designer */}
           <div
-            ref={(el) => (animatedRefs.current[3] = el!)}
+            ref={setRef(3)}
             className="scroll-anim relative bg-[var(--card-bg)] p-8 rounded-xl border border-[var(--border)] hover:border-[var(--accent)] transition-all flex flex-col"
           >
-            {/* Urgent Badge Overlay */}
+            {/* Urgent Badge */}
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
               <span className="px-4 py-1.5 text-xs font-medium rounded-full bg-[var(--accent)] text-white shadow-lg">
                 Urgent Requirement
@@ -153,7 +162,7 @@ export default function Careers() {
 
         {/* Why Join */}
         <div
-          ref={(el) => (animatedRefs.current[4] = el!)}
+          ref={setRef(4)}
           className="scroll-anim max-w-5xl mx-auto text-center"
         >
           <h2 className="text-3xl font-bold text-[var(--foreground)] mb-12">
@@ -179,9 +188,7 @@ export default function Careers() {
                 key={item.title}
                 className="group relative p-8 rounded-2xl bg-[var(--card-bg)] border border-[var(--border)] hover:border-[var(--accent)] transition-all hover:-translate-y-1"
               >
-                {/* Accent Glow */}
                 <div className="absolute inset-0 rounded-2xl bg-[var(--accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
-
                 <h3 className="text-xl font-semibold text-[var(--foreground)] mb-3">
                   {item.title}
                 </h3>
