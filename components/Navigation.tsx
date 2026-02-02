@@ -15,10 +15,10 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#projects", label: "Projects" },
-    { href: "#pricing", label: "Pricing / Plans" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#about", label: "About" },
+    { href: "/#projects", label: "Projects" },
+    { href: "/#pricing", label: "Pricing / Plans" },
+    { href: "/careers", label: "Careers" },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function Navigation() {
 
       <div className="relative max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo Area */}
-        <a href="#" className="flex items-center gap-3">
+        <a href="/" className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-[var(--accent)]/30">
             <img src={"/Kickstart.png"} alt="Kickstart" />
           </div>
@@ -66,7 +66,7 @@ export default function Navigation() {
         {/* Right Side Actions */}
         <div className="hidden lg:flex items-center gap-4">
           <button className="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-[var(--accent)]/30 transition-all duration-300 text-sm font-medium">
-            Get Started
+          <a href="mailto: kickstartnetworks@gmail.com">  Get Started </a>
           </button>
         </div>
 
@@ -97,7 +97,7 @@ export default function Navigation() {
             ))}
             <hr className="border-[var(--border)]" />
             <button className="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] text-white px-6 py-3 rounded-full hover:shadow-lg hover:shadow-[var(--accent)]/30 transition-colors font-medium w-full">
-              Get Started
+            <a href="mailto: kickstartnetworks@gmail.com">  Get Started </a>
             </button>
           </div>
         </div>

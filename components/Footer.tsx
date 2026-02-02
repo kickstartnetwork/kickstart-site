@@ -3,22 +3,22 @@ export default function Footer() {
 
   const footerLinks = {
     Product: [
-      { label: "Features", href: "#features" },
-      { label: "Mentors", href: "#" },
-      { label: "Pricing", href: "#" },
-      { label: "FAQ", href: "#" },
+      { label: "Why Us?", href: "/#whyus" },
+      { label: "Pricing", href: "/#pricing" },
+      { label: "FAQ", href: "/#faq" },
+      { label: "Contact", href: "/#contact" },
     ],
     Company: [
-      { label: "About Us", href: "#about" },
-      { label: "Projects", href: "#projects" },
-      { label: "Careers", href: "#" },
-      { label: "Blog", href: "#" },
+      { label: "About Us", href: "/#about" },
+      { label: "Projects", href: "/#projects" },
+      { label: "Careers", href: "/careers" },
+      { label: "Terms & Conditions", href: "/terms" },
     ],
-    Support: [
-      { label: "Help Center", href: "#" },
-      { label: "Contact", href: "#contact" },
-      { label: "Documentation", href: "#" },
-      { label: "Community", href: "#" },
+    Socials: [
+      { label: "LinkedIn", href: "/" },
+      { label: "WhatsApp", href: "/" },
+      { label: "Youtube", href: "/" },
+      { label: "Instagram", href:"/" },
     ],
   };
 
@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-                <a href="#" className="flex items-center gap-3">
+                <a href="/" className="flex items-center gap-3">
                 {/* Placeholder for Brand Image */}
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-[var(--accent)]/30">
                     <img src={"/Kickstart.png"}></img>

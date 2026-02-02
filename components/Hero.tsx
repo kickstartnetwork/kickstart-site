@@ -161,7 +161,7 @@ export default function Hero() {
         {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button className="cursor-pointer group bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] text-white px-8 py-4 rounded-full hover:shadow-lg hover:shadow-[var(--accent)]/30 transition-all duration-300 font-medium text-lg flex items-center gap-2">
-            Start Your Journey
+          <a href="mailto:kickstartnetworks@gmail.com"> Start your Journey! </a>
             <svg
               className="w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"
@@ -173,7 +173,7 @@ export default function Hero() {
           </button>
 
           <button className="cursor-pointer group px-8 py-4 rounded-full border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all duration-300 font-medium text-lg flex items-center gap-2">
-            View Projects
+          <a href="#projects"> View Projects </a>
             <svg
               className="w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"

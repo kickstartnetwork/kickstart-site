@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 const projects = [
   {
     category: "Embedded Systems",
@@ -38,6 +42,25 @@ const projects = [
 ];
 
 export default function Projects() {
+  const cardRefs = useRef<HTMLDivElement[]>([]);
+
+  /* ---------------- Scroll In / Out Animation ---------------- */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.isIntersecting
+            ? entry.target.classList.add("in-view")
+            : entry.target.classList.remove("in-view");
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    cardRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="projects" className="py-24 bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-6">
@@ -54,24 +77,29 @@ export default function Projects() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group bg-[var(--card-bg)] rounded-2xl overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--accent)]/10"
+              ref={(el) => (cardRefs.current[index] = el!)}
+              style={{ transitionDelay: `${index * 90}ms` }}
+              className="project-card group bg-[var(--card-bg)] rounded-2xl overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--accent)]/10"
             >
-              {/* Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-[var(--card-bg)] to-[var(--background)] flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[var(--accent)]/5 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-[var(--accent)]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
+              {/* Image Placeholder (ONLINE PLACEHOLDER IMAGE) */}
+              <div className="h-48 relative overflow-hidden">
+                <img
+                  src={`https://picsum.photos/600/400?random=${index + 1}`}
+                  alt="Project placeholder"
+                  className="absolute inset-0 w-full h-full object-cover opacity-85"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+
                 <div className="absolute bottom-4 left-4">
                   <span className="px-3 py-1 bg-[var(--accent)] text-white text-xs font-medium rounded-full">
                     {project.category}
                   </span>
                 </div>
               </div>
+
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
                   {project.title}
@@ -94,7 +122,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        {/* <div className="mt-12 text-center">
           <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] text-white rounded-full hover:shadow-lg hover:shadow-[var(--accent)]/30 transition-all font-medium">
             View All Projects
             <svg
@@ -106,8 +134,24 @@ export default function Projects() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
-        </div>
+        </div> */}
       </div>
+
+      {/* Scroll Animation Styles */}
+      <style jsx>{`
+        .project-card {
+          opacity: 0;
+          transform: translateY(28px);
+          transition:
+            opacity 600ms ease,
+            transform 600ms ease;
+        }
+
+        .project-card.in-view {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}</style>
     </section>
   );
 }

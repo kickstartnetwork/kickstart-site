@@ -92,7 +92,7 @@ export default function Features() {
   }, []);
 
   return (
-    <section id="features" className="py-24 bg-[var(--background)]">
+    <section id="whyus" className="py-24 bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
