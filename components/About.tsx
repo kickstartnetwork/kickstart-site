@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 
 export default function About() {
-  const animatedRefs = useRef<HTMLDivElement[]>([]);
+  const animatedRefs = useRef<(HTMLDivElement | undefined)[]>([]);
+  animatedRefs.current = [];
 
   /* ---------------- Scroll In / Out Animation ---------------- */
   useEffect(() => {
@@ -40,8 +41,8 @@ export default function About() {
         {/* Header */}
         <div
           ref={(el) => {
-  animatedRefs.current[0] = el;
-}}
+            animatedRefs.current[0] = el || undefined;
+          }}
           className="scroll-anim text-center mb-16"
         >
           <span className="text-[var(--accent)] font-medium text-sm uppercase tracking-wider">
@@ -62,7 +63,9 @@ export default function About() {
         <div className="grid lg:grid-cols-1 gap-16 items-center">
           {/* Content */}
           <div
-            ref={(el) => (animatedRefs.current[1] = el!)}
+            ref={(el) => {
+              animatedRefs.current[1] = el || undefined;
+            }}
             className="scroll-anim"
           >
             <p className="text-lg text-[var(--muted)] leading-relaxed mb-8">
@@ -115,7 +118,9 @@ export default function About() {
               ].map((item, i) => (
                 <div
                   key={item.label}
-                  ref={(el) => (animatedRefs.current[2 + i] = el!)}
+                  ref={(el) => {
+                    animatedRefs.current[2 + i] = el || undefined;
+                  }}
                   className="scroll-anim flex items-center gap-3 p-4 bg-[var(--card-bg)] border border-[var(--border)] rounded-xl hover:border-[var(--accent)] hover:bg-[var(--accent)]/5 transition-all duration-300 cursor-pointer group"
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
@@ -132,7 +137,9 @@ export default function About() {
 
           {/* Decorative Panel */}
           <div
-            ref={(el) => (animatedRefs.current[6] = el!)}
+            ref={(el) => {
+              animatedRefs.current[6] = el || undefined;
+            }}
             className="scroll-anim relative"
           >
             <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-[var(--accent)]/20 rounded-full -z-10 blur-3xl" />
