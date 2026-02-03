@@ -3,7 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 
 /* ---------------- Pricing Data ---------------- */
-const pricingData = {
+type Plan = {
+  title: string;
+  subtitle: string;
+  bestFor: string;
+  price: string;
+  features: string[];
+  highlight?: boolean;
+};
+
+const pricingData: Record<string, Record<string, Plan>> = {
   ece: {
     starter: {
       title: "Starter",
@@ -16,6 +25,7 @@ const pricingData = {
         "Working principle explanation",
         "Basic viva preparation support",
       ],
+      highlight: false,
     },
     core: {
       title: "Core",
@@ -57,6 +67,7 @@ const pricingData = {
         "Code walkthrough & logic explanation",
         "Viva preparation support",
       ],
+      highlight: false,
     },
     core: {
       title: "Core",
@@ -84,6 +95,7 @@ const pricingData = {
         "GitHub-ready guidance",
         "Interview & demo preparation",
       ],
+      highlight: false,
     },
   },
 };
@@ -191,7 +203,7 @@ export default function Pricing() {
           {plans.map((plan, i) => (
             <div
               key={plan.title}
-              ref={(el) => (animatedRefs.current[i] = el!)}
+              ref={(el) => { animatedRefs.current[i] = el! }}
               style={{ transitionDelay: `${i * 120}ms` }}
               className={`animated-card relative flex flex-col rounded-2xl border p-8 bg-[var(--card-bg)] ${
                 plan.highlight
@@ -258,7 +270,7 @@ export default function Pricing() {
             {addons.map((addon, i) => (
               <div
                 key={addon.name}
-                ref={(el) => (animatedRefs.current[plans.length + i] = el!)}
+                ref={(el) => { animatedRefs.current[plans.length + i] = el! }}
                 style={{ transitionDelay: `${i * 80}ms` }}
                 onClick={() => toggleAddon(addon.name)}
                 className={`animated-card cursor-pointer rounded-xl border p-6 text-left transition-all ${

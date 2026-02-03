@@ -80,7 +80,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              ref={(el) => (cardRefs.current[index] = el!)}
+              ref={(el) => { cardRefs.current[index] = el!; }}
               style={{ transitionDelay: `${index * 90}ms` }}
               className="project-card group bg-[var(--card-bg)] rounded-2xl overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--accent)]/10"
             >

@@ -97,7 +97,9 @@ export default function FAQ() {
             return (
               <div
                 key={faq.question}
-                ref={(el) => (itemRefs.current[index] = el!)}
+                ref={(el) => {
+                    if (el) itemRefs.current[index] = el;
+                  }}
                 className="faq-item group border border-[var(--border)] rounded-2xl bg-[var(--card-bg)] transition-all duration-300"
               >
                 {/* Question */}

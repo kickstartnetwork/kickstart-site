@@ -112,7 +112,7 @@ export default function Features() {
           {features.map((feature, i) => (
             <div
               key={feature.title}
-              ref={el => (cardsRef.current[i] = el!)}
+              ref={el => { cardsRef.current[i] = el!; }}
               className="feature-card relative overflow-hidden p-8 bg-[var(--card-bg)] rounded-2xl border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-300"
             >
               {/* Background Icon */}
