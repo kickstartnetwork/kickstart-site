@@ -69,7 +69,7 @@ export default function Projects() {
             Featured Work
           </span>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold text-[var(--foreground)]">
-            Projects by Our Students
+            Projects crafted by Us!
           </h2>
           <p className="mt-4 text-xl text-[var(--muted)] max-w-2xl mx-auto">
             Explore the innovative projects our mentees have successfully built
@@ -87,7 +87,7 @@ export default function Projects() {
               {/* Image Placeholder (ONLINE PLACEHOLDER IMAGE) */}
               <div className="h-48 relative overflow-hidden">
                 <img
-                  src={`https://picsum.photos/600/400?random=${index + 1}`}
+                  src={`https://www.placeholderimage.online/placeholder/420/310/262b36/610ca7?font=Lato.svg`}
                   alt="Project placeholder"
                   className="absolute inset-0 w-full h-full object-cover opacity-85"
                 />
