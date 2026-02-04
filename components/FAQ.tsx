@@ -90,7 +90,7 @@ export default function FAQ() {
         </div>
 
         {/* FAQ List */}
-        <div className="space-y-4 space-x-1 p-2 h-[600px] ">
+        <div className="space-y-4 space-x-1 p-2 md:h-[600px] h-[700px]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 

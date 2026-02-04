@@ -3,56 +3,58 @@
 import { useEffect, useRef } from "react";
 
 export default function About() {
-  const animatedRefs = useRef<(HTMLDivElement | undefined)[]>([]);
-  animatedRefs.current = [];
+  const animatedRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   /* ---------------- Scroll In / Out Animation ---------------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-          } else {
-            entry.target.classList.remove("in-view");
-          }
+          entry.isIntersecting
+            ? entry.target.classList.add("in-view")
+            : entry.target.classList.remove("in-view");
         });
       },
       { threshold: 0.2 }
     );
 
     animatedRefs.current.forEach((el) => el && observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
+
+  const setRef =
+    (index: number) =>
+    (el: HTMLDivElement | null): void => {
+      animatedRefs.current[index] = el;
+    };
 
   return (
     <section
       id="about"
-      className="py-24 bg-gradient-to-br from-[var(--background)] via-[var(--card-bg)] to-[var(--background)] relative overflow-hidden"
+      className="py-20 sm:py-24 bg-gradient-to-br from-[var(--background)] via-[var(--card-bg)] to-[var(--background)] relative overflow-hidden"
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-[var(--accent)] rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-[var(--accent-light)] rounded-full blur-3xl" />
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <div className="absolute top-10 left-10 w-24 sm:w-32 h-24 sm:h-32 bg-[var(--accent)] rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-32 sm:w-40 h-32 sm:h-40 bg-[var(--accent-light)] rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div
-          ref={(el) => {
-            animatedRefs.current[0] = el || undefined;
-          }}
-          className="scroll-anim text-center mb-16"
+          ref={setRef(0)}
+          className="scroll-anim text-center mb-14 sm:mb-16"
         >
-          <span className="text-[var(--accent)] font-medium text-sm uppercase tracking-wider">
+          <span className="text-[var(--accent)] font-medium text-xs sm:text-sm uppercase tracking-wider">
             About Us
           </span>
-          <h2 className="mt-4 text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-[var(--foreground)] via-[var(--accent)] to-[var(--accent-light)] bg-clip-text text-transparent">
+
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-[var(--foreground)] via-[var(--accent)] to-[var(--accent-light)] bg-clip-text text-transparent">
             Empowering Students to Build{" "}
             <span className="text-[var(--accent)]">Real Projects</span>
           </h2>
-          <p className="mt-6 text-xl text-[var(--muted)] leading-relaxed max-w-3xl mx-auto">
+
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-[var(--muted)] leading-relaxed max-w-3xl mx-auto">
             Kickstart is a project guidance and technical mentoring initiative
             designed specifically for ECE and CSE students undertaking final-year
             projects or personal technical endeavors.
@@ -60,15 +62,10 @@ export default function About() {
         </div>
 
         {/* Main Grid */}
-        <div className="grid lg:grid-cols-1 gap-16 items-center">
+        <div className="grid gap-14 sm:gap-16">
           {/* Content */}
-          <div
-            ref={(el) => {
-              animatedRefs.current[1] = el || undefined;
-            }}
-            className="scroll-anim"
-          >
-            <p className="text-lg text-[var(--muted)] leading-relaxed mb-8">
+          <div ref={setRef(1)} className="scroll-anim">
+            <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed mb-8">
               We understand the challenges students face when embarking on
               technical projects. From finding the right idea to executing it
               successfully, our structured approach ensures you have the support
@@ -77,7 +74,7 @@ export default function About() {
             </p>
 
             {/* Tags */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 {
                   label: "ECE Students",
@@ -118,9 +115,7 @@ export default function About() {
               ].map((item, i) => (
                 <div
                   key={item.label}
-                  ref={(el) => {
-                    animatedRefs.current[2 + i] = el || undefined;
-                  }}
+                  ref={setRef(2 + i)}
                   className="scroll-anim flex items-center gap-3 p-4 bg-[var(--card-bg)] border border-[var(--border)] rounded-xl hover:border-[var(--accent)] hover:bg-[var(--accent)]/5 transition-all duration-300 cursor-pointer group"
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
@@ -136,14 +131,9 @@ export default function About() {
           </div>
 
           {/* Decorative Panel */}
-          <div
-            ref={(el) => {
-              animatedRefs.current[6] = el || undefined;
-            }}
-            className="scroll-anim relative"
-          >
-            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-[var(--accent)]/20 rounded-full -z-10 blur-3xl" />
-            <div className="absolute -top-8 -left-8 w-48 h-48 bg-[var(--accent-light)]/15 rounded-full -z-10 blur-2xl" />
+          <div ref={setRef(6)} className="scroll-anim relative">
+            <div className="absolute -bottom-6 sm:-bottom-8 -right-6 sm:-right-8 w-48 sm:w-64 h-48 sm:h-64 bg-[var(--accent)]/20 rounded-full -z-10 blur-3xl" />
+            <div className="absolute -top-6 sm:-top-8 -left-6 sm:-left-8 w-36 sm:w-48 h-36 sm:h-48 bg-[var(--accent-light)]/15 rounded-full -z-10 blur-2xl" />
           </div>
         </div>
       </div>
