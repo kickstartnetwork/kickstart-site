@@ -50,7 +50,7 @@ export default function About() {
           </span>
 
           <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-[var(--foreground)] via-[var(--accent)] to-[var(--accent-light)] bg-clip-text text-transparent">
-            Empowering Students to Build{" "}
+            Empowering People to Build{" "}
             <span className="text-[var(--accent)]">Real Projects</span>
           </h2>
 
