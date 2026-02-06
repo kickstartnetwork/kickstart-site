@@ -7,7 +7,12 @@ const faqs = [
   {
     question: "Who is Kickstart for?",
     answer:
-      "Kickstart is designed for ECE and CSE students working on final-year projects, mini projects, or personal technical projects who need structured guidance and mentorship.",
+      "Kickstart is designed for Students and Tech Enthusiasts working on tech projects, mini projects, or personal technical projects, perfect for those who need structured guidance and looking for teem to build their visionp.",
+  },
+  {
+    question: "I am a Founder with an Awesome idea but I can't build it myself, will Kickstart help me ?",
+    answer:
+      "Yes. We will work closely with you in bringing your idea to life and build a full-scale end product that meets your vision.",
   },
   {
     question: "Do I need a project idea before joining?",

@@ -124,7 +124,7 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--accent)]/10 rounded-full mb-8">
           <span className="w-2 h-2 bg-[var(--accent)] rounded-full animate-pulse" />
           <span className="text-[var(--accent)] text-sm font-medium">
-            For ECE & CSE Students
+            For Emerging Tech Enthusiasts
           </span>
         </div>
 

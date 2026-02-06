@@ -86,14 +86,14 @@ const pricingData: Record<string, Record<string, Plan>> = {
     advanced: {
       title: "Advanced",
       subtitle: "Industry & Placement Focused",
-      bestFor: "Product companies & startups",
+      bestFor: "SaaS tier project completion",
       price: "₹12,000",
       features: [
         "Advanced project (AI / Full-stack / Cloud)",
         "System architecture explanation",
         "Real-world use-case mapping",
         "GitHub-ready guidance",
-        "Interview & demo preparation",
+        "Interview / Demo preparation",
       ],
       highlight: false,
     },

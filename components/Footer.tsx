@@ -24,9 +24,9 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: "X", href: "#", label: "Twitter" },
-    { icon: "LinkedIn", href: "#", label: "LinkedIn" },
-    { icon: "Instagram", href: "#", label: "Instagram" },
-    { icon: "GitHub", href: "#", label: "GitHub" },
+    { icon: "IN", href: "#", label: "LinkedIn" },
+    { icon: "IG", href: "#", label: "Instagram" },
+    { icon: "GIT", href: "#", label: "GitHub" },
   ];
 
   return (
