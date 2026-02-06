@@ -55,9 +55,8 @@ export default function About() {
           </h2>
 
           <p className="mt-6 text-base sm:text-lg md:text-xl text-[var(--muted)] leading-relaxed max-w-3xl mx-auto">
-            Kickstart is a project guidance and technical mentoring initiative
-            designed specifically for ECE and CSE students undertaking final-year
-            projects or personal technical endeavors.
+          Structured support for students and tech enthusiasts for personal or professional full-scale technical projects. 
+          Get expert guidance for project ideation, development, and execution
           </p>
         </div>
 
@@ -66,11 +65,11 @@ export default function About() {
           {/* Content */}
           <div ref={setRef(1)} className="scroll-anim">
             <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed mb-8">
-              We understand the challenges students face when embarking on
-              technical projects. From finding the right idea to executing it
+              We understand the challenges emerginfg in the tech space, faced by Students, Tech Enthusiasts and Startup Founders when embarking on
+              personal or professional projects. From finding the right idea to executing it
               successfully, our structured approach ensures you have the support
               and guidance needed to transform your ideas into impactful,
-              portfolio-ready projects.
+              portfolio-ready projects fully-scalable into businesses.
             </p>
 
             {/* Tags */}
