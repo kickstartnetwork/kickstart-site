@@ -7,12 +7,12 @@ const faqs = [
   {
     question: "Who is Kickstart for?",
     answer:
-      "Kickstart is designed for Students and Tech Enthusiasts working on tech projects, mini projects, or personal technical projects, perfect for those who need structured guidance and looking for teem to build their visionp.",
+      "Kickstart is designed for Students and Tech Enthusiasts working on tech projects, mini projects, or personal projects, perfect for those who need structured guidance and looking for team to build their vision.",
   },
   {
     question: "I am a Founder with an Awesome idea but I can't build it myself, will Kickstart help me ?",
     answer:
-      "Yes. We will work closely with you in bringing your idea to life and build a full-scale end product that meets your vision.",
+      "Yes. We will work closely with you in bringing your idea to life and help you build a full-scale end product that meets your vision.",
   },
   {
     question: "Do I need a project idea before joining?",
@@ -95,7 +95,7 @@ export default function FAQ() {
         </div>
 
         {/* FAQ List */}
-        <div className="space-y-4 space-x-1 p-2 md:h-[600px] h-[700px]">
+        <div className="space-y-4 space-x-1 p-2 md:h-[600px] h-[750px]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
